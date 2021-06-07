@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljs.callray.dao.ChannelRepository">
+
+    <resultMap type="com.ljs.callray.entity.Channel" id="channelResult">
+        <id column="LSH" property="id" jdbcType="NUMERIC"/>
+        <result column="COMPUTER" property="computer" jdbcType="VARCHAR"/>
+        <result column="EXTENSION" property="extension" jdbcType="VARCHAR" />
+        <result column="ENABLE" property="enable" jdbcType="INTEGER"/>
+        <result column="CARDTYPE" property="cardType" jdbcType="VARCHAR"/>
+        <result column="CHNOINCARD" property="chNoInCard" jdbcType="INTEGER"/>
+        <result column="CHANNELTYPE" property="channelType" jdbcType="VARCHAR"/>
+        <result column="CHANNELIPADDR" property="channelIPAddr" jdbcType="VARCHAR"/>
+        <result column="CHANNELMAC" property="channelMac" jdbcType="VARCHAR"/>
+        <result column="CHANNELPACKETSIZE" property="channelPacketSize" jdbcType="INTEGER"/>
+        <result column="CHANNELVIRTUALEXT" property="channelVirtualExt" jdbcType="VARCHAR"/>
+        <result column="CHANNELSBCSERVER" property="channelSBCServer" jdbcType="VARCHAR"/>
+        <result column="CTIAPPIPADDR" property="ctiAppIPAddr" jdbcType="VARCHAR"/>
+    </resultMap>
+   <select id="getMaxChNoInCard" resultType="java.lang.Integer">
+       SELECT MAX(CHNOINCARD) FROM T_CHANNELS
+   </select>
+    <insert id="add" parameterType="com.ljs.callray.entity.Channel" >
+        <selectKey keyProperty="id" resultType="java.lang.Long" order="BEFORE">
+            select  (max(lsh) +1) as newlsh FROM T_CHANNELS
+        </selectKey>
+        INSERT INTO T_CHANNELS(LSH,COMPUTER,EXTENSION,ENABLE,CARDTYPE,
+        CHNOINCARD,CHANNELTYPE,CHANNELIPADDR,CHANNELMAC,CHANNELPACKETSIZE,
+        CHANNELVIRTUALEXT,CHANNELSBCSERVER,CTIAPPIPADDR)
+        VALUES(#{id},#{computer,jdbcType=VARCHAR},#{extension,jdbcType=VARCHAR},#{enable,jdbcType=INTEGER},#{cardType,jdbcType=VARCHAR},
+        #{chNoInCard,jdbcType=INTEGER},#{channelType,jdbcType=VARCHAR},#{channelIPAddr,jdbcType=VARCHAR},#{channelMac,jdbcType=VARCHAR},#{channelPacketSize,jdbcType=INTEGER},
+        #{channelVirtualExt,jdbcType=VARCHAR},#{channelSBCServer,jdbcType=VARCHAR},#{ctiAppIPAddr,jdbcType=VARCHAR})
+    </insert>
+
+
+</mapper>

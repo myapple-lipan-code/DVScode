@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DVSWeb>
+	<config>
+		<!-- 消息中心IP  -->
+		<msgCenterIP>192.168.0.174</msgCenterIP>
+		<!-- 消息中心端口 -->
+		<msgCenterPort>10005</msgCenterPort>
+		<!-- 数据中心IP -->
+		<dataCenterIP>127.0.0.1</dataCenterIP>
+		<!-- 数据中心端口 -->
+		<dataCenterPort>9502</dataCenterPort>
+		<!-- 录音压缩率 -->
+		<ratio>voip</ratio>
+		<!-- 录音监听端口 -->
+		<listenPort>10006</listenPort>
+		<!-- 
+			0:唯一标识 1业务标识 2工号 3主叫 4被叫 5分机 6时长
+			7年 8月 9日 10时 11分 12秒
+		 -->
+		<downFileType>{1}-{7}{8}{9}-{3}-{4}-{5}</downFileType>
+		<!-- 999:网页直接调用httpServerIp播放  0:外部链接协议调用CallrayPlayer-->
+		<Iscallrayplay>999</Iscallrayplay>
+		<!-- HTTP接口IP -->
+		<httpServerIp>192.168.0.172</httpServerIp>
+		<!-- HTTP接口Port -->
+		<httpServerPort>9503</httpServerPort>
+		<!-- 系统语言zh_CN or en_US -->
+		<alarmLang>zh_CN</alarmLang>
+		<!-- 录音下载路径  需要使用 \\-->
+		<localPath></localPath>
+		<maxSelectNumber>500</maxSelectNumber>
+	</config>
+	<cardTypes>
+		<cardType>CT_UNKNOWN</cardType>
+    	<cardType>CT_VOIP</cardType>
+	    <cardType>CT_VOIP_DMCC</cardType>
+	    <cardType>CT_VOIP_BIB</cardType>
+	    <cardType>CT_VOIP_AUTOGETIP</cardType>
+	    <cardType>CT_VOIP_SIPSERVER</cardType>
+	    <cardType>CT_VOIP_DBL_REG</cardType>
+	    <cardType>CT_SHCTI</cardType>
+	    <cardType>CT_AILOGIX</cardType>
+	</cardTypes>
+	<channelTypes>
+		<channelType>UT_DEFAULT</channelType>
+		<channelType>UT_PLAY</channelType>
+		<channelType>UT_USER</channelType>
+		<channelType>UT_LIST_E1</channelType>
+		<channelType>UT_TRUCK_E1</channelType>
+		<channelType>UT_TRUCK</channelType>
+		<channelType>UT_RECORD</channelType>
+		<channelType>UT_HUAWEI_ESPACE</channelType>
+		<channelType>UT_HUAWEI_IAD</channelType>
+	</channelTypes>
+	<ratios>
+		<ratioType>1k</ratioType>
+		<ratioType>2k</ratioType>
+		<ratioType>3k</ratioType>
+		<ratioType>4k_TW16</ratioType>
+		<ratioType>4k</ratioType>
+		<ratioType>8k_a</ratioType>
+		<ratioType>8k_u</ratioType>
+		<ratioType>voip</ratioType>
+	</ratios>
+</DVSWeb>

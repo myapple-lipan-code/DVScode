@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<pointConfig>
+		<sameAlarmInterval>5</sameAlarmInterval>
+		<cpuAlarm open="true" point="85" superCount="3"/>
+		<diskAlarm open="true" point="25480"/>
+		<licensenum>2</licensenum>
+		<noRecordAlarm open="true" ignoreSaturday="true" ignoreSunday="false">
+			<noRecordTime beginTime="08:00" endTime="12:00" oneInterval="2" totalInterval="2"/> 
+			<noRecordTime beginTime="13:30" endTime="18:00" oneInterval="2" totalInterval="2"/> 
+		</noRecordAlarm>
+	</pointConfig>
+	<emailConfig open="false" host="smtp.mxhichina.com" port="25" starttls="true" auth="true">
+		<sender email="alarm@callray.com.cn" pwd="callray@123"/>
+		<subject>alsrm system</subject>
+		<receivers>
+			<receiver email="zhouchang@callray.com.cn" nickname="zc"/>
+		</receivers>
+	</emailConfig>
+	<gradeConfig>
+		<gradeA>#FF0D19</gradeA>
+		<gradeB>#FFFF0F</gradeB>
+		<gradeC>#0D0DFF</gradeC>
+	</gradeConfig>
+	
+</config>

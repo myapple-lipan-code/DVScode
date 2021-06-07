@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sysColumns>     
+	<column index="1" name="uniqueguid" value="唯一标识" en_value="Uniqueguid"  defaultValue="唯一标识" width="240" export="true" show="false"/>
+	<column index="2" name="uniqueid" value="业务标识" en_value="Uniqueid" defaultValue="业务标识" width="200" export="true" show="true"/>
+	<column index="3" name="agent" value="话务员" en_value="Agent"  defaultValue="话务员" width="100" export="true" show="true"/>
+	<column index="4" name="callid" value="主叫号码" en_value="Callid" defaultValue="主叫号码" width="100" export="true" show="true"/>
+	<column index="5" name="calledid" value="被叫号码" en_value="Calledid" defaultValue="被叫号码" width="100" export="true" show="true"/>
+	<column index="6" name="extention" value="分机号" en_value="Extention" defaultValue="分机号" width="100" export="true" show="true"/>
+	<column index="7" name="preid" value="转接前分机" en_value="Preid" defaultValue="转接前分机" width="100" export="false" show="false"/>
+	<column index="8" name="nextid" value="转接/会议信息" en_value="Nextid" defaultValue="转接/会议信息" width="100" export="false" show="false"/>
+	<column index="9" name="starttime" value="开始时间" en_value="Starttime" defaultValue="开始时间" width="140" export="true" show="true" format="datetimeToStr"/>
+	<column index="10" name="endtime" value="结束时间" en_value="EndTime" defaultValue="结束时间" width="140" export="true" show="false" format="datetimeToStr"/>
+	<column index="11" name="howtime" value="时长" en_value="HowTime" defaultValue="时长" width="100" export="true" format="howtimeToStr" show="true"/>
+	<column index="12" name="acd" value="acd组号" en_value="ACD" defaultValue="acd组号" width="100" export="false" show="false"/>
+	<column index="13" name="dins" value="姓名" en_value="Dins" defaultValue="姓名" width="100" export="true" show="false"/>
+	<column index="14" name="inorout" value="呼叫类型" en_value="InOrOut" defaultValue="呼叫类型" width="60" export="true" format="inoroutToStr" show="true"/>
+	<column index="15" name="ifback" value="备份" en_value="Ifback" defaultValue="备份" width="60" export="false" format="ifbackToStr" show="false"/>
+	<column index="16" name="backwhere" value="备份卷标" en_value="Backwhere" defaultValue="备份卷标" export="false" show="false"/>
+	<column index="17" name="voicepath" value="录音文件路径" en_value="Voicepath" defaultValue="录音文件路径" export="false" show="false"/>
+	<column index="18" name="datapath" value="录屏文件路径" en_value="Datapath" defaultValue="录屏文件路径" export="false" show="false"/>
+	<column index="19" name="files" value="文件名" en_value="Files" defaultValue="文件名" export="false" show="false"/>
+	<column index="20" name="backpath" value="备份路径" en_value="Backpath" defaultValue="备份路径" export="false" show="false"/>
+	<column index="21" name="whereplace" value="备份" en_value="Whereplace" defaultValue="备份" export="false" show="false"/>
+	<column index="22" name="voicesize" value="录音文件大小" en_value="Voicesize" defaultValue="录音文件大小" export="true" show="false"/>
+	<column index="23" name="datasize" value="录屏文件大小" en_value="Datasize" defaultValue="录屏文件大小" export="false" show="false"/>
+	<column index="24" name="restorepath" value="恢复路径" en_value="Restorepath" defaultValue="恢复路径" export="false" show="false"/>
+	<column index="25" name="grade" value="等级" en_value="Grade" defaultValue="等级" export="false" show="false"/>
+	<column index="26" name="remark" value="注释" en_value="Remark" defaultValue="注释" export="false" show="false"/>
+	<column index="27" name="columnsOne" value="冗余字段1" en_value="ColumnsOne" defaultValue="冗余字段1" export="false" show="false"/>
+	<column index="28" name="columnsTwo" value="冗余字段2" en_value="ColumnsTwo" defaultValue="冗余字段2" export="false" show="false"/>
+	<column index="29" name="columnsThree" value="冗余字段3" en_value="ColumnsThree" defaultValue="冗余字段3" export="false" show="false"/>
+	<column index="30" name="columnsFour" value="冗余字段4" en_value="ColumnsFour" defaultValue="冗余字段4" export="false" show="false"/>
+	<column index="31" name="columnsFive" value="冗余字段5" en_value="ColumnsFive" defaultValue="冗余字段5" export="false" show="false"/>
+	<column index="32" name="columnsSix" value="冗余字段6" en_value="ColumnsSix" defaultValue="冗余字段6" export="false" show="false"/>
+	<column index="33" name="columnsSeven" value="冗余字段7" en_value="ColumnsSeven" defaultValue="冗余字段7" export="false" show="false"/>
+	<column index="34" name="columnsEight" value="冗余字段8" en_value="ColumnsEight" defaultValue="冗余字段8" export="false" show="false"/>
+	<column index="35" name="columnsNine" value="冗余字段9" en_value="ColumnsNine" defaultValue="冗余字段9" export="false" show="false"/>
+	<column index="36" name="columnsTen" value="冗余字段10" en_value="ColumnsTen" defaultValue="冗余字段10" export="false" show="false"/>
+</sysColumns>  

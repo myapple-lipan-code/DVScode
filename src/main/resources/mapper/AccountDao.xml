@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljs.callray.dao.AccountRepository">
+
+    <resultMap type="com.ljs.callray.entity.Account" id="accountResult">
+        <id column="account_id" jdbcType="INTEGER" property="id" />
+        <result column="account_name" jdbcType="VARCHAR" property="name" />
+        <result column="account_password" jdbcType="VARCHAR" property="password" />
+        <result column="account_property" jdbcType="INTEGER" property="property" />
+        <result column="account_rights" jdbcType="VARCHAR" property="rights" />
+        <result column="account_desp" jdbcType="VARCHAR" property="desp" />
+        <result column="account_alias" jdbcType="VARCHAR" property="alias" />
+        <result column="account_despdescribe" jdbcType="INTEGER" property="despdescribe" />
+        <result column="account_dspts" jdbcType="VARCHAR" property="dspts" />
+    </resultMap>
+    <sql id="accountColumns">account_id,account_name,account_password,account_property,account_rights,account_desp,account_alias,account_despdescribe,account_dspts</sql>
+    <select id="getByNameAndProperty" resultMap="accountResult" parameterType="com.ljs.callray.entity.Account">
+        SELECT <include refid="accountColumns"></include> FROM TX_ACCOUNT
+        <where>
+            ACCOUNT_NAME = #{name} AND ACCOUNT_PROPERTY = #{property}
+        </where>
+    </select>
+
+    <select id="getByIds" resultMap="accountResult" parameterType="java.util.List">
+      SELECT <include refid="accountColumns"></include> FROM TX_ACCOUNT
+      <where>
+          <if test="list != null and list.size() > 0">
+            ACCOUNT_ID IN (
+              <foreach collection="list" item="item" separator=",">
+                  #{item}
+              </foreach>
+              )
+          </if>
+      </where>
+
+    </select>
+    <select id="getByProperty" parameterType="int" resultMap="accountResult">
+        SELECT  <include refid="accountColumns"></include> FROM TX_ACCOUNT WHERE  ACCOUNT_PROPERTY = #{_paramter}
+        <if test="_paramter != 1">
+            AND ACCOUNT_NAME != 'Administrator'
+        </if>
+    </select>
+    
+    <select id="getByPropertyAndDepartments" parameterType="java.util.Map" resultMap="accountResult">
+         SELECT * FROM tx_account
+         <where>
+             account_property = #{property}
+             AND(
+             <foreach collection="departments" item="item" separator=" OR">
+                 CHARINDEX(#{item},account_desp) > 0
+             </foreach>
+             )
+             AND ACCOUNT_NAME != 'Administrator'
+         </where>
+
+    </select>
+    <!-- 查找部门下的帐号 -->
+    <select id="getByDepartment" parameterType="java.lang.String" resultMap="accountResult">
+        SELECT <include refid="accountColumns" /> FROM TX_ACCOUNT
+        <where>
+
+                    charindex(#{_paramter},account_desp) > 0 and ACCOUNT_NAME != 'Administrator'
+
+        </where>
+    </select>
+    <select id="getAgentAndExtByDepartments" parameterType="java.util.Map" resultMap="accountResult">
+        SELECT <include refid="accountColumns" /> FROM TX_ACCOUNT
+        <where>
+
+            <if test="accountProperty == 4">
+                account_property = 4
+            </if>
+            <if test="accountProperty == 8">
+                account_property = 8
+            </if>
+            and(
+            <foreach collection="list" item="item" separator="or">
+                        charindex(#{item},account_desp) > 0
+            </foreach>
+            )
+        </where>
+        ORDER BY ACCOUNT_ID ASC
+    </select>
+    <select id="getMgrAccountAgentOrExt" parameterType="java.util.Map" resultMap="accountResult">
+        SELECT <include refid="accountColumns" /> FROM TX_ACCOUNT a LEFT JOIN TX_MANAGERAGENT m ON a.ACCOUNT_ID=m.AGENT_ID
+        <where>
+            <if test="id != null">
+                m.MANAGER_ID=#{id}
+            </if>
+            <choose>
+                <when test="accountProperty == 4">
+                    and a.account_property  &lt;&gt; 8
+                </when>
+                <when test="accountProperty == 8 ">
+                    and a.account_property = 8
+                </when>
+
+            </choose>
+        </where>
+    </select>
+    <select id="getByNameAndPassword" parameterType="com.ljs.callray.entity.Account" resultMap="accountResult">
+        SELECT <include refid="accountColumns" /> FROM TX_ACCOUNT
+        WHERE ACCOUNT_NAME = #{name} AND ACCOUNT_PASSWORD =#{password}
+
+    </select>
+    <select id="getMgrAccount" parameterType="java.lang.Long" resultMap="accountResult">
+        SELECT <include refid="accountColumns" /> FROM TX_ACCOUNT a LEFT JOIN TX_MANAGERAGENT m ON a.ACCOUNT_ID=m.AGENT_ID WHERE m.MANAGER_ID=#{_parameter}
+    </select>
+
+</mapper>
